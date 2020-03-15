@@ -2,20 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="af21dc8e-a901-4418-b2fd-bc5ae0c96c81" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/goods/migrations/0001_initial.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/goods/migrations/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/trade/migrations/0001_initial.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/trade/migrations/0002_auto_20200315_1558.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/trade/migrations/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/user_operation/migrations/0001_initial.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/user_operation/migrations/0002_auto_20200315_1558.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/user_operation/migrations/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/users/migrations/0001_initial.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MxShopV2/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/MxShopV2/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MxShopV2/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/MxShopV2/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/users/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/users/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/goods/apps.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/goods/apps.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/trade/apps.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/trade/apps.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/user_operation/apps.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/user_operation/apps.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/users/apps.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/users/apps.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,7 +30,9 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1Z9WrD0oRRiGXxA10xrzV67tpTM" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="true" />
@@ -46,10 +42,14 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/extra_apps" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/apps/users" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\project\VueShop\MxShopV2\apps\users" />
+      <recent name="E:\project\VueShop\MxShopV2\apps\user_operation" />
+      <recent name="E:\project\VueShop\MxShopV2\apps\trade" />
+      <recent name="E:\project\VueShop\MxShopV2\apps\goods" />
       <recent name="E:\project\VueShop\MxShopV2\extra_apps" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
@@ -92,7 +92,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1584251986434</updated>
-      <workItem from="1584251988141" duration="6887000" />
+      <workItem from="1584251988141" duration="9613000" />
     </task>
     <servers />
   </component>
@@ -100,21 +100,21 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
-    <state width="1077" height="279" key="GridCell.Tab.0.bottom" timestamp="1584259157472">
+    <state width="1077" height="279" key="GridCell.Tab.0.bottom" timestamp="1584263446091">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1077" height="279" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1584259157472" />
-    <state width="1077" height="279" key="GridCell.Tab.0.center" timestamp="1584259157471">
+    <state width="1077" height="279" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1584263446091" />
+    <state width="1077" height="279" key="GridCell.Tab.0.center" timestamp="1584263446091">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1077" height="279" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1584259157471" />
-    <state width="1077" height="279" key="GridCell.Tab.0.left" timestamp="1584259157471">
+    <state width="1077" height="279" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1584263446091" />
+    <state width="1077" height="279" key="GridCell.Tab.0.left" timestamp="1584263446091">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1077" height="279" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1584259157471" />
-    <state width="1077" height="279" key="GridCell.Tab.0.right" timestamp="1584259157471">
+    <state width="1077" height="279" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1584263446091" />
+    <state width="1077" height="279" key="GridCell.Tab.0.right" timestamp="1584263446091">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1077" height="279" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1584259157471" />
+    <state width="1077" height="279" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1584263446091" />
   </component>
 </project>

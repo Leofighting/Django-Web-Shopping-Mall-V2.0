@@ -38,11 +38,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'users',
-    'trade',
-    'user_operation',
-    'goods',
+    'users.apps.UsersConfig',
+    'trade.apps.TradeConfig',
+    'user_operation.apps.UserOperationConfig',
+    'goods.apps.GoodsConfig',
     'DjangoUeditor',  # 富文本编辑器
+    'crispy_forms',
+    'xadmin',   # xadmin 后台管理系统
 ]
 
 MIDDLEWARE = [
@@ -122,7 +124,7 @@ USE_I18N = True
 
 USE_L10N = True
 
-USE_TZ = True
+USE_TZ = False
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/

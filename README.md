@@ -103,7 +103,44 @@ from django.contrib.auth import get_user_model
 User = get_user_model()
 ```
 
-
-
 **注意：不要将 可视化工具管理数据库表 和 `makemigrations` 混合使用**
 
+
+
+## `xadmin` 后台管理系统配置
+
+1. 配置每个应用中的  `adminx.py` 文件
+
+2. 安装相关依赖包：https://github.com/Leofighting/xadmin
+
+   ```python
+   django>=1.9.0
+   django-crispy-forms>=1.6.0
+   django-import-export>=0.5.1
+   django-reversion>=2.0.0
+   django-formtools==1.0
+   future==0.15.2
+   httplib2==0.9.2
+   six==1.10.0
+   ```
+
+3. 配置 `settings.py` 文件
+
+> ```python
+> INSTALLED_APPS = [
+>     ...
+>     'crispy_forms',
+>     'xadmin',   # xadmin 后台管理系统
+>     ...
+> ]
+> ```
+>
+> 
+
+4. 生成迁移文件： `makemigrations --> migrate`
+
+5. 配置反问路径，主目录下的 `urls.py`
+
+   
+
+   
