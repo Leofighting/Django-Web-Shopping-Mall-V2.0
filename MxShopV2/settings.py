@@ -38,6 +38,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'users',
+    'trade',
+    'user_operation',
+    'goods',
+    'DjangoUeditor',  # 富文本编辑器
 ]
 
 MIDDLEWARE = [
@@ -123,3 +128,6 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
 STATIC_URL = '/static/'
+
+# 替换系统用户
+AUTH_USER_MODEL = "users.UserProfile"
