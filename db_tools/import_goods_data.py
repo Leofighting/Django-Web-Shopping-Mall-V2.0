@@ -9,6 +9,7 @@ sys.path.append(pwd + "../")
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "MxShopV2.settings")
 
 import django
+
 django.setup()
 
 from goods.models import Goods, GoodsCategory, GoodsImage
@@ -36,4 +37,3 @@ for goods_detail in row_data:
         goods_image_instance.image = goods_image
         goods_image_instance.goods = goods
         goods_image_instance.save()
-

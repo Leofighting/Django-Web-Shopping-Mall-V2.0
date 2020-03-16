@@ -9,6 +9,7 @@ sys.path.append(pwd + "../")
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "MxShopV2.settings")
 
 import django
+
 django.setup()
 
 from goods.models import GoodsCategory

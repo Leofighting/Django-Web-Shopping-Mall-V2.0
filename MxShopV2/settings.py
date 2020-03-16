@@ -44,7 +44,8 @@ INSTALLED_APPS = [
     'goods.apps.GoodsConfig',
     'DjangoUeditor',  # 富文本编辑器
     'crispy_forms',
-    'xadmin',   # xadmin 后台管理系统
+    'xadmin',  # xadmin 后台管理系统
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
@@ -135,3 +136,9 @@ MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 
 # 替换系统用户
 AUTH_USER_MODEL = "users.UserProfile"
+
+# REST_FRAMEWORK 配置
+REST_FRAMEWORK = {
+    'DEFAULT_PAGINATION_CLASS': "rest_framework.pagination.PageNumberPagination",
+    "PAGE_SIZE": 10
+}

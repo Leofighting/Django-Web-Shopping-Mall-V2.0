@@ -122,6 +122,8 @@ User = get_user_model()
    future==0.15.2
    httplib2==0.9.2
    six==1.10.0
+   django-guardian==1.4.9
+   coreapi==2.3.1
    ```
 
 3. 配置 `settings.py` 文件
@@ -141,6 +143,189 @@ User = get_user_model()
 
 5. 配置反问路径，主目录下的 `urls.py`
 
-   
 
-   
+
+
+## `Vue 与 RESTful API`
+
+### 前后端分离
+
+> 优点：
+>
+> 1. PC端、`APP`应用，移动端（手机、平板等） 多端适应
+> 2. SPA（单页面应用） 开发模式的流行
+> 3. 前后端开发职责不清晰
+> 4. 开发效率问题，前后端互相等待
+> 5. 前端配合后端，能力受限
+> 6. 后台开发语言和模板高度耦合，导致开发语言依赖严重
+>
+> 缺点：
+>
+> 1. 前后端学习门槛增加
+> 2. 数据依赖，导致文档重要性增加
+> 3. 增加前端工作量
+> 4. `SEO` 的难度增加
+> 5. 后端开发模式迁移成本增加
+>
+> 
+
+### `RESTful API`
+
+> 前后端分离的最佳实践，规范
+>
+> 1. 轻量：直接通过`http`，不需要额外的协议，实现 post/get/put/delete 的操作
+> 2. 面向资源，一目了然，具有自解析性
+> 3. 数据描述简单，一般通过` json` 或者 `xml` 做数据通信
+>
+> 参考资料：
+>
+> 1. [理解RESTful架构](http://www.ruanyifeng.com/blog/2011/09/restful.html)
+> 2. [RESTful API 设计指南](http://www.ruanyifeng.com/blog/2014/05/restful_api.html)
+
+### `Vue`
+
+> 前端工程化
+>
+> 数据双向绑定
+>
+> 组件化开发
+
+### `Django rest_framework API` 自动文档配置
+
+> 主目录下 `ruls.py` :
+>
+> ```python
+> from rest_framework.documentation import include_docs_urls
+> 
+> urlpatterns = [
+>     ...
+>     url(r"^docs/", include_docs_urls(title="your_project_name")),
+>     url(r"^api-auth/", include("rest_framework.urls", namespace="rest_framework")),
+>     ...
+> ]
+> ```
+
+> `settings.py` :
+>
+> ```python
+> INSTALLED_APPS = [
+>     ...
+>     'rest_framework',
+> ]
+> ```
+
+
+
+## `Django rest_framework API` 开发应用
+
+### 序列化：针对 `json` 对象
+
+> ```python
+> from rest_framework import serializers
+> 
+> from goods.models import Goods, GoodsCategory
+> 
+> 
+> class CategorySerializer(serializers.ModelSerializer):
+>     """序列化：商品分类"""
+> 
+>     class Meta:
+>         model = GoodsCategory
+>         fields = "__all__"
+> 
+> 
+> class GoodsSerializer(serializers.ModelSerializer):
+>     """序列化：商品"""
+>     category = CategorySerializer()  # 用序列化实例，覆盖原来的外键对象
+> 
+>     class Meta:
+>         model = Goods
+>         fields = "__all__"
+> ```
+
+### 视图 `views.py`
+
+> ```python
+> from rest_framework import mixins
+> from rest_framework import viewsets
+> 
+> from goods.models import Goods
+> from goods.serializers import GoodsSerializer
+> 
+> 
+> class GoodsListViewSet(mixins.ListModelMixin, viewsets.GenericViewSet):
+>     """
+>     商品列表
+>     """
+>     queryset = Goods.objects.all()  # 模型
+>     serializer_class = GoodsSerializer  # 序列化类
+>     pagination_class = GoodsPagination  # 分页器类
+> ```
+
+### 路由 `urls.py`
+
+> ```python
+> from rest_framework.routers import DefaultRouter
+> 
+> from goods.views import GoodsListViewSet
+> 
+> router = DefaultRouter()
+> 
+> # 配置 商品列表 url
+> router.register(r'goods', GoodsListViewSet)
+> 
+> 
+> urlpatterns = [
+>     ...
+>     # router
+>     url(r'^', include(router.urls)),
+> ]
+> ```
+
+### 分页配置
+
+> `settings.py`
+>
+> ```python
+> REST_FRAMEWORK = {
+>     'DEFAULT_PAGINATION_CLASS': "rest_framework.pagination.PageNumberPagination",  # 分页格式
+>     "PAGE_SIZE": 10  # 每页显示数量
+> }
+> ```
+
+> 定制分页器，对应`viewa.py` ：
+>
+> ```python
+> from rest_framework.pagination import PageNumberPagination
+> 
+> 
+> class GoodsPagination(PageNumberPagination):
+>     page_size = 10  # 每页数量
+>     page_size_query_param = 'page_size'  # 每页数量设置关键字
+>     page_query_param = "p"  # 页数关键字
+>     max_page_size = 100
+> 
+> 
+> class GoodsListView(generics.ListAPIView):
+>    ...
+>     pagination_class = GoodsPagination
+> ```
+
+### `APIView, GenericView, Viewset` 的逻辑关系
+
+> 继承关系
+>
+> ```python
+> View									# Django
+> 	--APIView							# drf
+>     	--GenericAPIView				# drf
+>         	--GenericVieset(Viewset)	# drf
+>             
+> mixins
+> 	CreateModelMixin
+>     ListModelMixin
+>     RetrieveModelMixin
+>     UpdateModelMixin
+>     DestroyModelMixin
+> ```
+

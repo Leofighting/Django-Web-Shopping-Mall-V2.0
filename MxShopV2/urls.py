@@ -13,13 +13,28 @@ Including another URLconf
     1. Import the include() function: from django.conf.urls import url, include
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
-from django.conf.urls import url
+from django.conf.urls import url, include
 from django.views.static import serve
+from rest_framework.documentation import include_docs_urls
+from rest_framework.routers import DefaultRouter
 
 import xadmin
 from MxShopV2.settings import MEDIA_ROOT
+from goods.views import GoodsListViewSet
+
+router = DefaultRouter()
+
+# 配置 商品列表 url
+router.register(r'goods', GoodsListViewSet)
+
 
 urlpatterns = [
     url(r'^xadmin/', xadmin.site.urls),
     url(r"^media/(?P<path>.*)$", serve, {"document_root": MEDIA_ROOT}),
+    # 文档
+    url(r"^docs/", include_docs_urls(title="慕学生鲜")),
+    # api 接口
+    url(r"^api-auth/", include("rest_framework.urls", namespace="rest_framework")),
+    # router
+    url(r'^', include(router.urls)),
 ]
