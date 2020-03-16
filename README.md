@@ -311,6 +311,10 @@ User = get_user_model()
 >     pagination_class = GoodsPagination
 > ```
 
+> 页面展示
+>
+> ![image-20200316180514355](E:\project\VueShop\MxShopV2\images\01.png)
+
 ### `APIView, GenericView, Viewset` 的逻辑关系
 
 > 继承关系
@@ -329,3 +333,110 @@ User = get_user_model()
 >     DestroyModelMixin
 > ```
 
+
+
+### 过滤器
+
+相关配置
+
+> `settings.py`：
+>
+> ```python
+> INSTALLED_APPS = [
+>     ...
+>     'django_filters',  
+> ]
+> 
+> REST_FRAMEWORK = {
+>     'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend']
+> }
+> ```
+
+> `views.py`：
+>
+> ```python
+> from django_filters.rest_framework import DjangoFilterBackend
+> 
+> 
+> class GoodsListViewSet(mixins.ListModelMixin, viewsets.GenericViewSet):
+>     """
+>     商品列表
+>     """
+>     ...
+>     queryset = Goods.objects.all()
+>     filter_backends = [DjangoFilterBackend]
+>     filter_fields = ["name", "shop_price"]  # 注意，需要完全匹配才能得到过滤结果
+> ```
+
+> 页面效果
+>
+> ![image-20200316181834827](E:\project\VueShop\MxShopV2\images\02.png)
+
+> 自定义过滤器
+>
+> `filters.py`
+>
+> ```python
+> import django_filters
+> 
+> from goods.models import Goods
+> 
+> 
+> class GoodsFilter(django_filters.rest_framework.FilterSet):
+>     """自定义商品过滤器"""
+>     price_min = django_filters.NumberFilter(name="shop_price", lookup_expr="gte")
+>     price_max = django_filters.NumberFilter(name="shop_price", lookup_expr="lte")
+> 
+>     class Meta:
+>         model = Goods
+>         fields = ['price_min', 'price_max']
+> ```
+>
+> `views.py`
+>
+> ```python
+> from goods.filters import GoodsFilter
+> 
+> 
+> class GoodsListViewSet(mixins.ListModelMixin, viewsets.GenericViewSet):
+>     """
+>     商品列表
+>     """
+>     ...
+>     filter_class = GoodsFilter
+> ```
+
+### 模糊搜索
+
+> ```python
+> from rest_framework import filters
+> 
+> 
+> class GoodsListViewSet(mixins.ListModelMixin, viewsets.GenericViewSet):
+>     """
+>     商品列表
+>     """
+> 	...
+>     filter_backends = [DjangoFilterBackend, filters.SearchFilter]
+>     search_fields = ["name", "goods_brief", "goods_desc"]
+> ```
+
+> 页面效果
+>
+> ![image-20200316195713561](E:\project\VueShop\MxShopV2\images\03.png)
+
+### 排序
+
+> ```python
+> class GoodsListViewSet(mixins.ListModelMixin, viewsets.GenericViewSet):
+>     """
+>     商品列表
+>     """
+> 	...
+>     filter_backends = [DjangoFilterBackend, filters.SearchFilter, filters.OrderingFilter]
+>     ordering_fields = ["sold_num", "add_time"]
+> ```
+
+> 页面效果
+>
+> ![image-20200316200535682](E:\project\VueShop\MxShopV2\images\04.png)

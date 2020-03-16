@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'crispy_forms',
     'xadmin',  # xadmin 后台管理系统
     'rest_framework',
+    'django_filters',  # 过滤器
 ]
 
 MIDDLEWARE = [
@@ -140,5 +141,6 @@ AUTH_USER_MODEL = "users.UserProfile"
 # REST_FRAMEWORK 配置
 REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS': "rest_framework.pagination.PageNumberPagination",
-    "PAGE_SIZE": 10
+    "PAGE_SIZE": 10,
+    'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend']
 }
