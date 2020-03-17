@@ -3,7 +3,7 @@ __author__ = "leo"
 
 from rest_framework import serializers
 
-from goods.models import Goods, GoodsCategory
+from goods.models import Goods, GoodsCategory, HotSearchWords
 
 
 class CategorySerializer3(serializers.ModelSerializer):
@@ -40,3 +40,8 @@ class GoodsSerializer(serializers.ModelSerializer):
         model = Goods
         fields = "__all__"
 
+
+class HotWordsSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = HotSearchWords
+        fields = "__all__"

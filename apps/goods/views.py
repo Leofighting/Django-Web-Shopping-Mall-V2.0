@@ -6,8 +6,8 @@ from rest_framework import filters
 from rest_framework.authentication import TokenAuthentication
 
 from goods.filters import GoodsFilter
-from goods.models import Goods, GoodsCategory
-from goods.serializers import GoodsSerializer, CategorySerializer
+from goods.models import Goods, GoodsCategory, HotSearchWords
+from goods.serializers import GoodsSerializer, CategorySerializer, HotWordsSerializer
 
 
 class GoodsPagination(PageNumberPagination):
@@ -37,3 +37,9 @@ class CategoryViewSet(mixins.ListModelMixin, mixins.RetrieveModelMixin, viewsets
     """
     queryset = GoodsCategory.objects.filter(category_type=1)
     serializer_class = CategorySerializer
+
+
+class HotSearchesViewSet(mixins.ListModelMixin, viewsets.GenericViewSet):
+    """获取热搜词列表"""
+    queryset = HotSearchWords.objects.all().order_by("-index")
+    serializer_class = HotWordsSerializer

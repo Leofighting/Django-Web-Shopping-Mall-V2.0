@@ -586,6 +586,41 @@ User = get_user_model()
 >     url(r'^api-token-auth/', obtain_jwt_token),
 > ]
 > ```
->
-> 
 
+
+
+## 用户注册
+
+> 短信验证第三方服务：[云片网](https://www.yunpian.com/)      [官方文档](https://www.yunpian.com/official/document/sms/zh_CN/readme)
+
+> 用户前端页面提交的数据都储存在 `initial_data` 属性中，可在序列化时提取验证
+>
+> ```python
+> class UserSerializer(serializers.ModelSerializer):
+>     """序列化：用户"""
+>     code = serializers.CharField(required=True, max_length=4, min_length=4)
+>     
+>     def validate_code(self, code):
+>         """核对验证码"""
+>         verify_record = VerifyCode.objects.filter(mobile=self.initial_data["username"]).order_by("-add_time")
+> ```
+
+> 删除前端输入的，无需保存在数据库中的参数，例如用户输入的验证码，只需用于核对，无需储存在数据库中
+>
+> 在序列化中做数据校验
+>
+> ```python
+> def validate(self, attrs):
+>     attrs["mobile"] = attrs["username"]  # 将用户前端输入的用户名赋值作为手机号码
+>     del attrs["code"]  # 删除前端提交的验证码
+>     return attrs
+> ```
+
+> 验证用户名的唯一性
+>
+> ```python
+> from rest_framework.validators import UniqueValidator
+> 
+> username = serializers.CharField(required=True, allow_blank=False,
+>                                      validators=[UniqueValidator(queryset=User.objects.all(), message="用户已存在~")])
+> ```

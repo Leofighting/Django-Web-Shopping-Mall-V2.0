@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'users.apps.UsersConfig',
+    'users',
     'trade.apps.TradeConfig',
     'user_operation.apps.UserOperationConfig',
     'goods.apps.GoodsConfig',
@@ -166,3 +166,9 @@ JWT_AUTH = {
     'JWT_EXPIRATION_DELTA': datetime.timedelta(days=7),  # 设置过期时间
     'JWT_AUTH_HEADER_PREFIX': 'JWT',  # 验证方式
 }
+
+# 手机号码正则验证
+REGEX_MOBILE = "^1[3578]\d{9}$"
+
+# 云片网设置
+API_KEY = "云片网的api_key"
