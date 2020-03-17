@@ -29,7 +29,6 @@ router.register(r'goods', GoodsListViewSet, basename="goods")
 # 配置 商品分类列表 url
 router.register(r'categorys', CategoryViewSet, basename="categorys")
 
-
 urlpatterns = [
     url(r'^xadmin/', xadmin.site.urls),
     url(r"^media/(?P<path>.*)$", serve, {"document_root": MEDIA_ROOT}),

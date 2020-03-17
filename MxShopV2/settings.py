@@ -47,9 +47,11 @@ INSTALLED_APPS = [
     'xadmin',  # xadmin 后台管理系统
     'rest_framework',
     'django_filters',  # 过滤器
+    'corsheaders',  # 跨域访问
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -140,7 +142,11 @@ AUTH_USER_MODEL = "users.UserProfile"
 
 # REST_FRAMEWORK 配置
 REST_FRAMEWORK = {
-    'DEFAULT_PAGINATION_CLASS': "rest_framework.pagination.PageNumberPagination",
-    "PAGE_SIZE": 10,
+    # 'DEFAULT_PAGINATION_CLASS': "rest_framework.pagination.PageNumberPagination",
+    # "PAGE_SIZE": 10,
     'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend']
 }
+
+
+# django-cors-headers 配置
+CORS_ORIGIN_ALLOW_ALL = True

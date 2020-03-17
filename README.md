@@ -470,3 +470,26 @@ User = get_user_model()
 >         fields = "__all__"
 > ```
 
+### 处理跨域访问问题
+
+> [相关文档](https://github.com/Leofighting/django-cors-headers)
+>
+> `settings.py` 配置
+>
+> ```python
+> INSTALLED_APPS = [
+>     ...
+>     'corsheaders',
+>     ...
+> ]
+> 
+> MIDDLEWARE = [
+>     ...
+>     'corsheaders.middleware.CorsMiddleware',  # 尽量放前面
+>     ...
+> ]
+> 
+> # django-cors-headers 配置
+> CORS_ORIGIN_ALLOW_ALL = True
+> 
+> ```
