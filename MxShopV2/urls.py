@@ -20,12 +20,14 @@ from rest_framework.routers import DefaultRouter
 
 import xadmin
 from MxShopV2.settings import MEDIA_ROOT
-from goods.views import GoodsListViewSet
+from goods.views import GoodsListViewSet, CategoryViewSet
 
 router = DefaultRouter()
 
 # 配置 商品列表 url
-router.register(r'goods', GoodsListViewSet)
+router.register(r'goods', GoodsListViewSet, basename="goods")
+# 配置 商品分类列表 url
+router.register(r'categorys', CategoryViewSet, basename="categorys")
 
 
 urlpatterns = [

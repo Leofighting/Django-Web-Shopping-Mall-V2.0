@@ -440,3 +440,33 @@ User = get_user_model()
 > 页面效果
 >
 > ![image-20200316200535682](E:\project\VueShop\MxShopV2\images\04.png)
+
+### 序列化多层嵌套
+
+> ```python
+> class CategorySerializer3(serializers.ModelSerializer):
+>     """序列化：商品分类-二级"""
+> 
+>     class Meta:
+>         model = GoodsCategory
+>         fields = "__all__"
+> 
+> 
+> class CategorySerializer2(serializers.ModelSerializer):
+>     """序列化：商品分类-二级"""
+>     sub_cat = CategorySerializer3(many=True)  # 三级分类的序列化
+> 
+>     class Meta:
+>         model = GoodsCategory
+>         fields = "__all__"
+> 
+> 
+> class CategorySerializer(serializers.ModelSerializer):
+>     """序列化：商品分类-一级"""
+>     sub_cat = CategorySerializer2(many=True)  # 二级分类的序列化
+> 
+>     class Meta:
+>         model = GoodsCategory
+>         fields = "__all__"
+> ```
+
