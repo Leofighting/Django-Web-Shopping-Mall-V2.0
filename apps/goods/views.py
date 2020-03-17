@@ -3,6 +3,7 @@ from rest_framework import mixins
 from rest_framework import viewsets
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import filters
+from rest_framework.authentication import TokenAuthentication
 
 from goods.filters import GoodsFilter
 from goods.models import Goods, GoodsCategory
@@ -22,6 +23,7 @@ class GoodsListViewSet(mixins.ListModelMixin, viewsets.GenericViewSet):
     """
     serializer_class = GoodsSerializer
     pagination_class = GoodsPagination
+    # authentication_classes = [TokenAuthentication]
     queryset = Goods.objects.all()
     filter_backends = [DjangoFilterBackend, filters.SearchFilter, filters.OrderingFilter]
     filter_class = GoodsFilter

@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/1.11/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/1.11/ref/settings/
 """
-
+import datetime
 import os
 import sys
 
@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'django_filters',  # 过滤器
     'corsheaders',  # 跨域访问
+    'rest_framework.authtoken',  # 用户登录系统
 ]
 
 MIDDLEWARE = [
@@ -144,9 +145,24 @@ AUTH_USER_MODEL = "users.UserProfile"
 REST_FRAMEWORK = {
     # 'DEFAULT_PAGINATION_CLASS': "rest_framework.pagination.PageNumberPagination",
     # "PAGE_SIZE": 10,
-    'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend']
+    'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend'],
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.BasicAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+        'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
+    ]
 }
-
 
 # django-cors-headers 配置
 CORS_ORIGIN_ALLOW_ALL = True
+
+# 自定义用户验证
+AUTHENTICATION_BACKENDS = [
+    "users.views.CustomBackend",
+]
+
+# JWT 设置
+JWT_AUTH = {
+    'JWT_EXPIRATION_DELTA': datetime.timedelta(days=7),  # 设置过期时间
+    'JWT_AUTH_HEADER_PREFIX': 'JWT',  # 验证方式
+}

@@ -17,6 +17,8 @@ from django.conf.urls import url, include
 from django.views.static import serve
 from rest_framework.documentation import include_docs_urls
 from rest_framework.routers import DefaultRouter
+from rest_framework.authtoken import views
+from rest_framework_jwt.views import obtain_jwt_token
 
 import xadmin
 from MxShopV2.settings import MEDIA_ROOT
@@ -38,4 +40,8 @@ urlpatterns = [
     url(r"^api-auth/", include("rest_framework.urls", namespace="rest_framework")),
     # router
     url(r'^', include(router.urls)),
+    # 用户登录 drf 自带的Token 认证模式
+    url(r'^api-token-auth/', views.obtain_auth_token),
+    # jwt 认证接口
+    url(r'^login/', obtain_jwt_token),
 ]

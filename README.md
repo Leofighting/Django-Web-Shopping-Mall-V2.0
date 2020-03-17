@@ -493,3 +493,99 @@ User = get_user_model()
 > CORS_ORIGIN_ALLOW_ALL = True
 > 
 > ```
+
+
+
+## 用户登录
+
+前后端分离的用户系统，常用 `TokenAuthentication`
+
+> 配置 `settings.py`
+>
+> ```python
+> INSTALLED_APPS = [
+>     ...
+>     'rest_framework.authtoken'
+> ]
+> 
+> REST_FRAMEWORK = {
+>     'DEFAULT_AUTHENTICATION_CLASSES': [
+>         'rest_framework.authentication.BasicAuthentication',
+>         'rest_framework.authentication.SessionAuthentication',
+>         'rest_framework.authentication.TokenAuthentication',
+>     ]
+> }
+> ```
+
+> 生成数据迁移表
+
+> 主目录下的`urls.py`
+>
+> ```python
+> from rest_framework.authtoken import views
+> urlpatterns += [
+>     url(r'^api-token-auth/', views.obtain_auth_token)
+> ]
+> ```
+
+> 仅在接口处进行用户验证，需要删除 `settings.py` 中的全局配置
+>
+> 在 `views.py` 中配置
+>
+> ```python
+> from rest_framework.authentication import TokenAuthentication
+> 
+> 
+> class GoodsListViewSet(mixins.ListModelMixin, viewsets.GenericViewSet):
+>     """
+>     商品列表
+>     """
+>     ...
+>     authentication_classes = [TokenAuthentication]
+> ```
+
+> 公开数据，不需要做用户验证，可以游客身份浏览公开页面
+
+### `JWT` 用户认证
+
+> 参考资料：[前后端分离之JWT用户认证](https://lion1ou.win/2017/01/18/)
+>
+> 使用安装包 ：[django-rest-framework-jwt](https://github.com/Leofighting/django-rest-framework-jwt)；[官方文档](http://jpadilla.github.io/django-rest-framework-jwt/)
+
+> 安装：`pip install djangorestframework-jwt`
+
+> 配置：
+>
+> `settings.py`
+>
+> ```python
+> REST_FRAMEWORK = {
+>     'DEFAULT_AUTHENTICATION_CLASSES': (
+>         ...
+>         'rest_framework.authentication.BasicAuthentication',
+>     ),
+> }
+> 
+> # JWT 设置
+> JWT_AUTH = {
+>     'JWT_EXPIRATION_DELTA': datetime.timedelta(days=7),  # 设置过期时间
+>     'JWT_AUTH_HEADER_PREFIX': 'JWT',  # 验证方式
+> }
+> ```
+>
+> `urls.py`
+>
+> ```python
+> from rest_framework_jwt.views import obtain_jwt_token
+> #...
+> 
+> urlpatterns = [
+>     '',
+>     # ...
+> 
+>     url(r'^api-token-auth/', obtain_jwt_token),
+> ]
+> ```
+>
+> 
+
