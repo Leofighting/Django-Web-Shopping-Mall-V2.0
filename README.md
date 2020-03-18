@@ -624,3 +624,56 @@ User = get_user_model()
 > username = serializers.CharField(required=True, allow_blank=False,
 >                                      validators=[UniqueValidator(queryset=User.objects.all(), message="用户已存在~")])
 > ```
+
+> `write_only=True`
+>
+> ```python
+> # 序列化时，会忽略 code 字段
+> code = serializers.CharField(required=True, max_length=4, min_length=4, 
+>                              write_only=True, help_text="请输入验证码", label="验证码")
+> ```
+
+> ```python
+> # 设置密码为密文形式
+> password = serializers.CharField(
+>     style={'input_type': 'password'}
+> )
+> ```
+
+### 信号量机制
+
+> `Django` 会对请求、提交、删除等操作时发出的信号进行捕捉，捕捉信号后，可以在其中加入相应的操作逻辑；代码分离性好
+>
+> [相关文档](https://docs.djangoproject.com/en/1.10/ref/signals/)
+
+> 在对应的应用下创建 `signals.py`
+>
+> ```python
+> from django.db.models.signals import post_save
+> from django.dispatch import receiver
+> from django.contrib.auth import get_user_model
+> 
+> User = get_user_model()
+> 
+> 
+> @receiver(post_save, sender=User)
+> def create_auth_token(sender, instance=None, created=False, **kwargs):
+>     if created:
+>         password = instance.password
+>         instance.set_password(password)
+>         instance.save()
+> ```
+
+> 在 `apps.py` 文件中配置
+>
+> ```python
+> from django.apps import AppConfig
+> 
+> 
+> class UsersConfig(AppConfig):
+>     name = 'apps.users'
+>     verbose_name = "用户管理"
+> 
+>     def ready(self):
+>         import users.signals  # 导入信号量模块
+> ```

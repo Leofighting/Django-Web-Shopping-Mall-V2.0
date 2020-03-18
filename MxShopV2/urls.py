@@ -32,7 +32,7 @@ router.register(r'goods', GoodsListViewSet, basename="goods")
 # 配置 商品分类列表 url
 router.register(r'categorys', CategoryViewSet, basename="categorys")
 # 配置 短信验证码 url
-router.register(r'codes', SmsCodeViewSet, basename="codes")
+router.register(r'code', SmsCodeViewSet, basename="code")
 # 配置 热搜词 url
 router.register(r'hotsearchs', HotSearchesViewSet, basename="hotsearchs")
 # 配置 用户 url
