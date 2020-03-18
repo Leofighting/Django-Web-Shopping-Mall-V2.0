@@ -677,3 +677,54 @@ User = get_user_model()
 >     def ready(self):
 >         import users.signals  # 导入信号量模块
 > ```
+
+
+
+## 用户收藏
+
+> 联合唯一索引
+>
+> ```python
+> # 在 models.py 文件中
+> class UserFav(models.Model):
+>     """
+>     用户收藏
+>     """
+>     ...
+> 
+>     class Meta:
+>         ...
+>         unique_together = ("user", "goods")  # 将两个字段作为联合索引
+> ```
+
+> 自定义联合索引
+>
+> ```python
+> # 在 serializers.py 文件中
+> class Meta:
+>     model = UserFav
+>     validators = [
+>         UniqueTogetherValidator(
+>             queryset=UserFav.objects.all(),
+>             fields=("user", "goods"),
+>             message="该商品已经收藏~"
+>         )
+>     ]
+> ```
+
+### 用户权限
+
+> [文档](https://www.django-rest-framework.org/api-guide/permissions/#isauthenticated)
+>
+> 用户只能删除自己收藏列表下的商品
+>
+> ```python
+> from rest_framework.permissions import IsAuthenticated
+> 
+> 
+> class UserFavViewSet(mixins.CreateModelMixin, mixins.ListModelMixin,
+>                      mixins.DestroyModelMixin, viewsets.GenericViewSet):
+>     """用户收藏"""
+>     ...
+>     permission_classes = [IsAuthenticated]
+> ```

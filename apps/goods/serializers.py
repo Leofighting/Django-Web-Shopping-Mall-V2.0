@@ -3,7 +3,7 @@ __author__ = "leo"
 
 from rest_framework import serializers
 
-from goods.models import Goods, GoodsCategory, HotSearchWords
+from goods.models import Goods, GoodsCategory, HotSearchWords, GoodsImage
 
 
 class CategorySerializer3(serializers.ModelSerializer):
@@ -32,9 +32,17 @@ class CategorySerializer(serializers.ModelSerializer):
         fields = "__all__"
 
 
+class GoodsImageSerializer(serializers.ModelSerializer):
+    """序列化：商品图片"""
+    class Meta:
+        model = GoodsImage
+        fields = ["image"]
+
+
 class GoodsSerializer(serializers.ModelSerializer):
     """序列化：商品"""
     category = CategorySerializer()
+    images = GoodsImageSerializer(many=True)
 
     class Meta:
         model = Goods
