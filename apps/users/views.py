@@ -8,10 +8,14 @@ from rest_framework import viewsets
 from rest_framework.response import Response
 from rest_framework import status
 from rest_framework_jwt.serializers import jwt_encode_handler, jwt_payload_handler
+from rest_framework_jwt.authentication import JSONWebTokenAuthentication
+from rest_framework import mixins
+from rest_framework import permissions
+from rest_framework import authentication
 
 from MxShopV2.settings import API_KEY
 from users.models import VerifyCode
-from users.serializers import SmsSerializer, UserRegisterSerializer
+from users.serializers import SmsSerializer, UserRegisterSerializer, UserDetailSerializer
 from utils.yunpian import YunPian
 
 User = get_user_model()
@@ -71,10 +75,10 @@ class SmsCodeViewSet(CreateModelMixin, viewsets.GenericViewSet):
         return Response({"mobile": mobile}, status=status.HTTP_201_CREATED)
 
 
-class UserViewSet(CreateModelMixin, viewsets.GenericViewSet):
+class UserViewSet(CreateModelMixin, mixins.UpdateModelMixin, mixins.RetrieveModelMixin, viewsets.GenericViewSet):
     """用户"""
-    serializer_class = UserRegisterSerializer
     queryset = User.objects.all()
+    authentication_classes = [JSONWebTokenAuthentication, authentication.SessionAuthentication]
 
     def create(self, request, *args, **kwargs):
         serializer = self.get_serializer(data=request.data)
@@ -91,3 +95,24 @@ class UserViewSet(CreateModelMixin, viewsets.GenericViewSet):
 
     def perform_create(self, serializer):
         return serializer.save()
+
+    def get_object(self):
+        return self.request.user
+
+    def get_permissions(self):
+        """动态设置权限"""
+        if self.action == "retrieve":
+            return [permissions.IsAuthenticated()]
+        elif self.action == "create":
+            return []
+
+        return []
+
+    def get_serializer_class(self):
+        """动态序列化类型"""
+        if self.action == "retrieve":
+            return UserDetailSerializer
+        elif self.action == "create":
+            return UserRegisterSerializer
+
+        return UserDetailSerializer

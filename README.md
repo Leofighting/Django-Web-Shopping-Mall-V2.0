@@ -728,3 +728,39 @@ User = get_user_model()
 >     ...
 >     permission_classes = [IsAuthenticated]
 > ```
+
+> 动态设置用户权限
+>
+> ```python
+> from rest_framework import permissions
+> 
+> class UserViewSet(CreateModelMixin, mixins.RetrieveModelMixin, viewsets.GenericViewSet):
+>     """用户"""
+> 	...
+>     def get_permissions(self):
+>         """动态设置权限"""
+>         if self.action == "retrieve":
+>             return [permissions.IsAuthenticated()]
+>         elif self.action == "create":
+>             return []
+> 
+>         return []
+> ```
+
+> 动态设置序列化类型
+>
+> ```python
+> class UserViewSet(CreateModelMixin, mixins.RetrieveModelMixin, viewsets.GenericViewSet):
+>     """用户"""
+> 	...
+>         def get_serializer_class(self):
+>         """动态序列化类型"""
+>         if self.action == "retrieve":
+>             return UserDetailSerializer
+>         elif self.action == "create":
+>             return UserRegisterSerializer
+> 
+>         return UserDetailSerializer
+> ```
+>
+> 

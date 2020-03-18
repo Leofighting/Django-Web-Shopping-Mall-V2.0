@@ -23,7 +23,7 @@ from rest_framework_jwt.views import obtain_jwt_token
 import xadmin
 from MxShopV2.settings import MEDIA_ROOT
 from goods.views import GoodsListViewSet, CategoryViewSet, HotSearchesViewSet
-from user_operation.views import UserFavViewSet
+from user_operation.views import UserFavViewSet, LeavingMessageViewSet, AddressViewSet
 from users.views import SmsCodeViewSet, UserViewSet
 
 router = DefaultRouter()
@@ -40,6 +40,10 @@ router.register(r'hotsearchs', HotSearchesViewSet, basename="hotsearchs")
 router.register(r'users', UserViewSet, basename="users")
 # 配置 用户收藏 url
 router.register(r'userfavs', UserFavViewSet, basename="userfavs")
+# 配置 用户留言 url
+router.register(r'messages', LeavingMessageViewSet, basename="messages")
+# 配置 用户地址 url
+router.register(r'address', AddressViewSet, basename="address")
 
 urlpatterns = [
     url(r'^xadmin/', xadmin.site.urls),

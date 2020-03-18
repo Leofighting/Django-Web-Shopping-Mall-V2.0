@@ -143,8 +143,7 @@ AUTH_USER_MODEL = "users.UserProfile"
 
 # REST_FRAMEWORK 配置
 REST_FRAMEWORK = {
-    # 'DEFAULT_PAGINATION_CLASS': "rest_framework.pagination.PageNumberPagination",
-    # "PAGE_SIZE": 10,
+    'DEFAULT_SCHEMA_CLASS': 'rest_framework.schemas.AutoSchema',
     'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend'],
     'DEFAULT_AUTHENTICATION_CLASSES': [
         'rest_framework.authentication.BasicAuthentication',

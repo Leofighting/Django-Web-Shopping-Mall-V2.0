@@ -19,7 +19,7 @@ class GoodsPagination(PageNumberPagination):
 
 class GoodsListViewSet(mixins.ListModelMixin, mixins.RetrieveModelMixin, viewsets.GenericViewSet):
     """
-    商品列表
+    list: 商品列表
     """
     serializer_class = GoodsSerializer
     pagination_class = GoodsPagination
