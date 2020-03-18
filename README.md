@@ -762,5 +762,15 @@ User = get_user_model()
 > 
 >         return UserDetailSerializer
 > ```
+
+
+
+## 购物车
+
+> 在序列化中，`user` 对象存放在 `serializer` 的上下文中：
 >
-> 
+> ```python
+> def create(self, validated_data):
+>     user = self.context["request"].user
+> ```
+
