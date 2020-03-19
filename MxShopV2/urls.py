@@ -23,7 +23,7 @@ from rest_framework_jwt.views import obtain_jwt_token
 
 import xadmin
 from MxShopV2.settings import MEDIA_ROOT
-from goods.views import GoodsListViewSet, CategoryViewSet, HotSearchesViewSet
+from goods.views import GoodsListViewSet, CategoryViewSet, HotSearchesViewSet, BannerViewSet, IndexCategoryViewSet
 from trade.views import ShoppingCartViewSet, OrderViewSet, AliPayViewSet
 from user_operation.views import UserFavViewSet, LeavingMessageViewSet, AddressViewSet
 from users.views import SmsCodeViewSet, UserViewSet
@@ -50,6 +50,10 @@ router.register(r'address', AddressViewSet, basename="address")
 router.register(r'shopcarts', ShoppingCartViewSet, basename="shopcarts")
 # 配置 订单 url
 router.register(r'orders', OrderViewSet, basename="orders")
+# 配置 轮播图 url
+router.register(r'banners', BannerViewSet, basename="banners")
+# 配置 首页分类数据 url
+router.register(r'indexgoods', IndexCategoryViewSet, basename="indexgoods")
 
 urlpatterns = [
     url(r'^xadmin/', xadmin.site.urls),

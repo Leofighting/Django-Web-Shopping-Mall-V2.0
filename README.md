@@ -774,3 +774,15 @@ User = get_user_model()
 >     user = self.context["request"].user
 > ```
 
+
+
+
+
+## 首页展示
+
+> 在序列化中使用其他的序列化实例（序列化嵌套），关于图片链接的字段，会判断上下文是否有 `request` ， 如果有，则会将域名添加到图片的链接中
+>
+> ```python
+> # 添加 request 到 context 中
+> goods_json = GoodsSerializer(goods_ins, many=False, context={"request": self.context["request"]}).data
+> ```

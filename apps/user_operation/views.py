@@ -32,6 +32,18 @@ class UserFavViewSet(mixins.CreateModelMixin, mixins.RetrieveModelMixin, mixins.
 
         return UserFavViewSet
 
+    def perform_create(self, serializer):
+        instance = serializer.save()
+        goods = instance.goods
+        goods.fav_num += 1
+        goods.save()
+
+    def perform_destroy(self, serializer):
+        instance = serializer.save()
+        goods = instance.goods
+        goods.fav_num -= 1
+        goods.save()
+
 
 class LeavingMessageViewSet(mixins.ListModelMixin, mixins.DestroyModelMixin,
                             mixins.CreateModelMixin, viewsets.GenericViewSet):
