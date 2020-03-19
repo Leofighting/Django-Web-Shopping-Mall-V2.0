@@ -135,6 +135,9 @@ USE_TZ = False
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
 STATIC_URL = '/static/'
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, "static"),
+)
 MEDIA_URL = "/media/"
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 
@@ -170,3 +173,8 @@ REGEX_MOBILE = "^1[3578]\d{9}$"
 
 # 云片网设置
 API_KEY = "云片网的api_key"
+
+# 阿里支付相关配置
+app_private_key_path = os.path.join(BASE_DIR, "apps/trade/keys/private_2048.txt")
+alipay_public_key_path = os.path.join(BASE_DIR, "apps/trade/keys/alipay_key_2048.txt")
+

@@ -2,9 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="af21dc8e-a901-4418-b2fd-bc5ae0c96c81" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MxShopV2/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/MxShopV2/settings.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MxShopV2/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/MxShopV2/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/trade/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/trade/serializers.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/apps/trade/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/trade/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -38,19 +40,19 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/db_tools" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/static" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="E:\project\VueShop\MxShopV2\db_tools" />
-      <recent name="E:\project\VueShop\MxShopV2\media" />
-      <recent name="E:\project\VueShop\MxShopV2\apps\users" />
-      <recent name="E:\project\VueShop\MxShopV2\apps\user_operation" />
-      <recent name="E:\project\VueShop\MxShopV2\apps\trade" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="E:\project\VueShop\MxShopV2\apps" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\project\VueShop\MxShopV2\static" />
+      <recent name="E:\project\VueShop\MxShopV2\templates" />
+      <recent name="E:\project\VueShop\MxShopV2\apps\utils" />
+      <recent name="E:\project\VueShop\MxShopV2\apps\trade\keys" />
+      <recent name="E:\project\VueShop\MxShopV2\db_tools" />
     </key>
   </component>
   <component name="RunManager" selected="Django server.MxShopV2">
@@ -98,6 +100,28 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="test" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="MxShopV2" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/test.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="MxShopV2" type="Python.DjangoServer" factoryName="Django server">
       <module name="MxShopV2" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -124,6 +148,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.test" />
         <item itemvalue="Python.import_goods_data" />
         <item itemvalue="Python.import_category_data" />
       </list>
@@ -142,7 +167,8 @@
       <workItem from="1584251988141" duration="14211000" />
       <workItem from="1584338822474" duration="16127000" />
       <workItem from="1584407763725" duration="21528000" />
-      <workItem from="1584493762037" duration="24332000" />
+      <workItem from="1584493762037" duration="25560000" />
+      <workItem from="1584582417280" duration="12709000" />
     </task>
     <servers />
   </component>
@@ -150,38 +176,38 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
-    <state width="1877" height="216" key="GridCell.Tab.0.bottom" timestamp="1584519281222">
+    <state width="1097" height="218" key="GridCell.Tab.0.bottom" timestamp="1584599051966">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="216" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1584519281222" />
-    <state width="1877" height="216" key="GridCell.Tab.0.center" timestamp="1584519281222">
+    <state width="1097" height="218" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1584599051966" />
+    <state width="1097" height="218" key="GridCell.Tab.0.center" timestamp="1584599051965">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="216" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1584519281222" />
-    <state width="1877" height="216" key="GridCell.Tab.0.left" timestamp="1584519281222">
+    <state width="1097" height="218" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1584599051965" />
+    <state width="1097" height="218" key="GridCell.Tab.0.left" timestamp="1584599051965">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="216" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1584519281222" />
-    <state width="1877" height="216" key="GridCell.Tab.0.right" timestamp="1584519281222">
+    <state width="1097" height="218" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1584599051965" />
+    <state width="1097" height="218" key="GridCell.Tab.0.right" timestamp="1584599051965">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="216" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1584519281222" />
-    <state width="1077" height="343" key="GridCell.Tab.1.bottom" timestamp="1584499156448">
+    <state width="1097" height="218" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1584599051965" />
+    <state width="1077" height="343" key="GridCell.Tab.1.bottom" timestamp="1584540766420">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1077" height="343" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1584499156448" />
-    <state width="1077" height="343" key="GridCell.Tab.1.center" timestamp="1584499156447">
+    <state width="1077" height="343" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1584540766420" />
+    <state width="1077" height="343" key="GridCell.Tab.1.center" timestamp="1584540766420">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1077" height="343" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1584499156447" />
-    <state width="1077" height="343" key="GridCell.Tab.1.left" timestamp="1584499156447">
+    <state width="1077" height="343" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1584540766420" />
+    <state width="1077" height="343" key="GridCell.Tab.1.left" timestamp="1584540766420">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1077" height="343" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1584499156447" />
-    <state width="1077" height="343" key="GridCell.Tab.1.right" timestamp="1584499156448">
+    <state width="1077" height="343" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1584540766420" />
+    <state width="1077" height="343" key="GridCell.Tab.1.right" timestamp="1584540766420">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1077" height="343" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1584499156448" />
+    <state width="1077" height="343" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1584540766420" />
     <state x="461" y="162" key="SettingsEditor" timestamp="1584273802294">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -209,5 +235,6 @@
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/MxShopV2$import_category_data.coverage" NAME="import_category_data Coverage Results" MODIFIED="1584275084295" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/db_tools" />
     <SUITE FILE_PATH="coverage/MxShopV2$import_goods_data.coverage" NAME="import_goods_data Coverage Results" MODIFIED="1584275975292" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/db_tools" />
+    <SUITE FILE_PATH="coverage/MxShopV2$test.coverage" NAME="test Coverage Results" MODIFIED="1584584309265" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>

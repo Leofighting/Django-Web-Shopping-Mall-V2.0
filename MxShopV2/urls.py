@@ -15,6 +15,7 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from django.views.static import serve
+from django.views.generic import TemplateView
 from rest_framework.documentation import include_docs_urls
 from rest_framework.routers import DefaultRouter
 from rest_framework.authtoken import views
@@ -23,7 +24,7 @@ from rest_framework_jwt.views import obtain_jwt_token
 import xadmin
 from MxShopV2.settings import MEDIA_ROOT
 from goods.views import GoodsListViewSet, CategoryViewSet, HotSearchesViewSet
-from trade.views import ShoppingCartViewSet
+from trade.views import ShoppingCartViewSet, OrderViewSet, AliPayViewSet
 from user_operation.views import UserFavViewSet, LeavingMessageViewSet, AddressViewSet
 from users.views import SmsCodeViewSet, UserViewSet
 
@@ -47,6 +48,8 @@ router.register(r'messages', LeavingMessageViewSet, basename="messages")
 router.register(r'address', AddressViewSet, basename="address")
 # 配置 购物车 url
 router.register(r'shopcarts', ShoppingCartViewSet, basename="shopcarts")
+# 配置 订单 url
+router.register(r'orders', OrderViewSet, basename="orders")
 
 urlpatterns = [
     url(r'^xadmin/', xadmin.site.urls),
@@ -61,4 +64,7 @@ urlpatterns = [
     url(r'^api-token-auth/', views.obtain_auth_token),
     # jwt 认证接口
     url(r'^login/', obtain_jwt_token),
+    # 阿里支付接口
+    url(r'^alipay/return/', AliPayViewSet, name="alipay"),
+    url(r'^index/', TemplateView.as_view(template_name="index.html"), name="index"),
 ]
