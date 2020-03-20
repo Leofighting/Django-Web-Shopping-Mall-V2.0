@@ -873,5 +873,58 @@ User = get_user_model()
 > 以微博为例
 >
 > [微博开放平台](https://open.weibo.com/?sudaref=www.baidu.com&display=0&retcode=6102)
+
+> 开源第三方插件   [官方文档](https://python-social-auth.readthedocs.io/en/latest/configuration/django.html)
 >
+> 安装：`pip install social-auth-app-django`
+>
+> `settings.py`
+>
+> ```python
+> INSTALLED_APPS = (
+>     ...
+>     'social_django',
+>     ...
+> )
 > 
+> TEMPLATES = [
+>     {
+>         ...
+>         'OPTIONS': {
+>             ...
+>             'context_processors': [
+>                 ...
+>                 'social_django.context_processors.backends',
+>                 'social_django.context_processors.login_redirect',
+>                 ...
+>             ]
+>         }
+>     }
+> ]
+> 
+> # 第三方登录配置
+> AUTHENTICATION_BACKENDS = (
+>     'social_core.backends.weibo.WeiboOAuth2',
+>     'django.contrib.auth.backends.ModelBackend',
+> )
+> 
+> SOCIAL_AUTH_WEIBO_KEY = "foobar"
+> SOCIAL_AUTH_WEIBO_SECRET = "bazqux"
+> ```
+>
+> 需要 `./manage.py migrate` 生成数据库迁移表
+>
+> 主目录下 `urls.py`
+>
+> ```python
+> urlpatterns = patterns('',
+>     ...
+>     url('', include('social_django.urls', namespace='social'))
+>     ...
+> )
+> ```
+
+
+
+## sentry 错误日志
+

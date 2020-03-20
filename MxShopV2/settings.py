@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'django_filters',  # 过滤器
     'corsheaders',  # 跨域访问
     'rest_framework.authtoken',  # 用户登录系统
+    'social_django',
 ]
 
 MIDDLEWARE = [
@@ -76,6 +77,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'social_django.context_processors.backends',
+                'social_django.context_processors.login_redirect',
             ],
             'builtins': [
                 'django.templatetags.static'
@@ -151,7 +154,16 @@ REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
         'rest_framework.authentication.BasicAuthentication',
         'rest_framework.authentication.SessionAuthentication',
-    ]
+    ],
+    # 限制 API 访问设置
+    'DEFAULT_THROTTLE_CLASSES': [
+        'rest_framework.throttling.AnonRateThrottle',
+        'rest_framework.throttling.UserRateThrottle'
+    ],
+    'DEFAULT_THROTTLE_RATES': {
+        'anon': '100/day',  # 游客每天访问次数
+        'user': '1000/day'  # 会员每天访问次数
+    }
 }
 
 # django-cors-headers 配置
@@ -194,14 +206,14 @@ CACHES = {
     }
 }
 
-# 限制 API 访问设置
-REST_FRAMEWORK = {
-    'DEFAULT_THROTTLE_CLASSES': [
-        'rest_framework.throttling.AnonRateThrottle',
-        'rest_framework.throttling.UserRateThrottle'
-    ],
-    'DEFAULT_THROTTLE_RATES': {
-        'anon': '100/day',  # 游客每天访问次数
-        'user': '1000/day'  # 会员每天访问次数
-    }
-}
+# 第三方登录配置
+AUTHENTICATION_BACKENDS = (
+    'users.views.CustomBackend',
+    'social_core.backends.weibo.WeiboOAuth2',
+    'django.contrib.auth.backends.ModelBackend',
+)
+
+SOCIAL_AUTH_WEIBO_KEY = "foobar"
+SOCIAL_AUTH_WEIBO_SECRET = "bazqux"
+SOCIAL_AUTH_LOGIN_REDIRECT_URL = "/index/"
+

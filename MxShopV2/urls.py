@@ -67,8 +67,10 @@ urlpatterns = [
     # 用户登录 drf 自带的Token 认证模式
     url(r'^api-token-auth/', views.obtain_auth_token),
     # jwt 认证接口
-    url(r'^login/', obtain_jwt_token),
+    url(r'^login/$', obtain_jwt_token),
     # 阿里支付接口
     url(r'^alipay/return/', AliPayViewSet, name="alipay"),
     url(r'^index/', TemplateView.as_view(template_name="index.html"), name="index"),
+    # 第三方登录
+    url(r'', include('social_django.urls', namespace='social'))
 ]
