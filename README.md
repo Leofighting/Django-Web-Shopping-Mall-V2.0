@@ -928,3 +928,25 @@ User = get_user_model()
 
 ## sentry 错误日志
 
+> [centos7下搭建sentry错误日志服务器]([http://projectsedu.com/2019/12/11/centos7%E4%B8%8B%E6%90%AD%E5%BB%BAsentry%E9%94%99%E8%AF%AF%E6%97%A5%E5%BF%97%E6%9C%8D%E5%8A%A1%E5%99%A8/](http://projectsedu.com/2019/12/11/centos7下搭建sentry错误日志服务器/))
+
+> sentry 继承到 `Django restframework`
+>
+> `pip install raven --upgrade`
+>
+> `settings.py`
+>
+> ```python
+> INSTALLED_APPS = [
+>     ...
+>     'raven.contrib.django.raven_compat'
+> ]
+> 
+> # sentry 相关配置
+> RAVEN_CONFIG = {
+>     "dsn": "dsn编码"
+> }
+> ```
+
+
+

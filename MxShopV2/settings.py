@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     'corsheaders',  # 跨域访问
     'rest_framework.authtoken',  # 用户登录系统
     'social_django',
+    'raven.contrib.django.raven_compat'
 ]
 
 MIDDLEWARE = [
@@ -217,3 +218,7 @@ SOCIAL_AUTH_WEIBO_KEY = "foobar"
 SOCIAL_AUTH_WEIBO_SECRET = "bazqux"
 SOCIAL_AUTH_LOGIN_REDIRECT_URL = "/index/"
 
+# sentry 相关配置
+RAVEN_CONFIG = {
+    "dsn": "dsn编码"
+}
