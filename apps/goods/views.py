@@ -5,6 +5,8 @@ from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import filters
 from rest_framework.authentication import TokenAuthentication
 from rest_framework.response import Response
+from rest_framework_extensions.cache.mixins import CacheResponseMixin
+from rest_framework.throttling import UserRateThrottle, AnonRateThrottle
 
 from goods.filters import GoodsFilter
 from goods.models import Goods, GoodsCategory, HotSearchWords, Banner
@@ -19,10 +21,11 @@ class GoodsPagination(PageNumberPagination):
     max_page_size = 100
 
 
-class GoodsListViewSet(mixins.ListModelMixin, mixins.RetrieveModelMixin, viewsets.GenericViewSet):
+class GoodsListViewSet(CacheResponseMixin, mixins.ListModelMixin, mixins.RetrieveModelMixin, viewsets.GenericViewSet):
     """
     list: 商品列表
     """
+    throttle_classes = [UserRateThrottle, AnonRateThrottle]
     serializer_class = GoodsSerializer
     pagination_class = GoodsPagination
     # authentication_classes = [TokenAuthentication]

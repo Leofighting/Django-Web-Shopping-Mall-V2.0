@@ -3,10 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="af21dc8e-a901-4418-b2fd-bc5ae0c96c81" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MxShopV2/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/MxShopV2/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MxShopV2/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/MxShopV2/settings.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/goods/filters.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/goods/filters.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/goods/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/goods/serializers.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/apps/goods/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/goods/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/apps/trade/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/trade/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/apps/user_operation/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/user_operation/views.py" afterDir="false" />
@@ -170,7 +168,8 @@
       <workItem from="1584338822474" duration="16127000" />
       <workItem from="1584407763725" duration="21528000" />
       <workItem from="1584493762037" duration="25560000" />
-      <workItem from="1584582417280" duration="19186000" />
+      <workItem from="1584582417280" duration="19187000" />
+      <workItem from="1584665612942" duration="5105000" />
     </task>
     <servers />
   </component>
@@ -178,22 +177,22 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
-    <state width="1877" height="218" key="GridCell.Tab.0.bottom" timestamp="1584613884548">
+    <state width="1097" height="353" key="GridCell.Tab.0.bottom" timestamp="1584670036986">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="218" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1584613884548" />
-    <state width="1877" height="218" key="GridCell.Tab.0.center" timestamp="1584613884548">
+    <state width="1097" height="353" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1584670036986" />
+    <state width="1097" height="353" key="GridCell.Tab.0.center" timestamp="1584670036986">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="218" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1584613884548" />
-    <state width="1877" height="218" key="GridCell.Tab.0.left" timestamp="1584613884548">
+    <state width="1097" height="353" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1584670036986" />
+    <state width="1097" height="353" key="GridCell.Tab.0.left" timestamp="1584670036986">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="218" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1584613884548" />
-    <state width="1877" height="218" key="GridCell.Tab.0.right" timestamp="1584613884548">
+    <state width="1097" height="353" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1584670036986" />
+    <state width="1097" height="353" key="GridCell.Tab.0.right" timestamp="1584670036986">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="218" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1584613884548" />
+    <state width="1097" height="353" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1584670036986" />
     <state width="1077" height="343" key="GridCell.Tab.1.bottom" timestamp="1584540766420">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -237,6 +236,6 @@
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/MxShopV2$import_category_data.coverage" NAME="import_category_data Coverage Results" MODIFIED="1584275084295" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/db_tools" />
     <SUITE FILE_PATH="coverage/MxShopV2$import_goods_data.coverage" NAME="import_goods_data Coverage Results" MODIFIED="1584275975292" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/db_tools" />
-    <SUITE FILE_PATH="coverage/MxShopV2$test.coverage" NAME="test Coverage Results" MODIFIED="1584584309265" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/MxShopV2$test.coverage" NAME="test Coverage Results" MODIFIED="1584668501631" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>

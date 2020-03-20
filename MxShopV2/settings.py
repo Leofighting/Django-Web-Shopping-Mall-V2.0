@@ -178,3 +178,30 @@ API_KEY = "云片网的api_key"
 app_private_key_path = os.path.join(BASE_DIR, "apps/trade/keys/private_2048.txt")
 alipay_public_key_path = os.path.join(BASE_DIR, "apps/trade/keys/alipay_key_2048.txt")
 
+# 缓存相关设置
+REST_FRAMEWORK_EXTENSIONS = {
+    'DEFAULT_CACHE_RESPONSE_TIMEOUT': 60 * 10
+}
+
+# Redis 缓存配置
+CACHES = {
+    "default": {
+        "BACKEND": "django_redis.cache.RedisCache",
+        "LOCATION": "redis://127.0.0.1:6379/1",
+        "OPTIONS": {
+            "CLIENT_CLASS": "django_redis.client.DefaultClient",
+        }
+    }
+}
+
+# 限制 API 访问设置
+REST_FRAMEWORK = {
+    'DEFAULT_THROTTLE_CLASSES': [
+        'rest_framework.throttling.AnonRateThrottle',
+        'rest_framework.throttling.UserRateThrottle'
+    ],
+    'DEFAULT_THROTTLE_RATES': {
+        'anon': '100/day',  # 游客每天访问次数
+        'user': '1000/day'  # 会员每天访问次数
+    }
+}

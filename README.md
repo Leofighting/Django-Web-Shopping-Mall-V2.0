@@ -786,3 +786,92 @@ User = get_user_model()
 > # 添加 request 到 context 中
 > goods_json = GoodsSerializer(goods_ins, many=False, context={"request": self.context["request"]}).data
 > ```
+
+
+
+## 缓存设置
+
+> [官方文档](http://chibisov.github.io/drf-extensions/docs/)
+> 安装：`pip install drf-extensions`
+>
+> 一般在获取数据时才是用缓存，例如：`retrieve` 或者 `list`，而提交数据或者更新数据不适宜使用缓存
+>
+> 已继承的方式使用即可，尽量第一个被继承
+>
+> ```python
+> from myapps.serializers import UserSerializer
+> from rest_framework_extensions.cache.mixins import CacheResponseMixin
+> 
+> class UserViewSet(CacheResponseMixin, viewsets.ModelViewSet):
+>     serializer_class = UserSerializer
+> ```
+
+> 设置缓存的过期时间 `settings.py`
+>
+> ```python
+> REST_FRAMEWORK_EXTENSIONS = {
+>     'DEFAULT_CACHE_RESPONSE_TIMEOUT': 60 * 15
+> }
+> ```
+
+### 配置 `Redis` 缓存
+
+> [官方文档](https://django-redis-chs.readthedocs.io/zh_CN/latest/)
+>
+> `settings.py`
+>
+> ```python
+> CACHES = {
+>     "default": {
+>         "BACKEND": "django_redis.cache.RedisCache",
+>         "LOCATION": "redis://127.0.0.1:6379/1",
+>         "OPTIONS": {
+>             "CLIENT_CLASS": "django_redis.client.DefaultClient",
+>         }
+>     }
+> }
+> ```
+
+
+
+## 设置 `API` 访问速率
+
+> 可以限制爬虫等，以免增加服务器的压力
+>
+> [官方文档](https://www.django-rest-framework.org/api-guide/throttling/)
+>
+> `settings.py`
+>
+> ```python
+> # 限制 API 访问设置
+> REST_FRAMEWORK = {
+>     'DEFAULT_THROTTLE_CLASSES': [
+>         'rest_framework.throttling.AnonRateThrottle',
+>         'rest_framework.throttling.UserRateThrottle'
+>     ],
+>     'DEFAULT_THROTTLE_RATES': {
+>         'anon': '100/day',  # 游客每天访问次数
+>         'user': '1000/day'  # 会员每天访问次数
+>     }
+> }
+> ```
+>
+> 对应的 `views.py`
+>
+> ```python
+> class GoodsListViewSet(CacheResponseMixin, mixins.ListModelMixin, mixins.RetrieveModelMixin, viewsets.GenericViewSet):
+>     """
+>     list: 商品列表
+>     """
+>     throttle_classes = [UserRateThrottle, AnonRateThrottle]
+> ```
+
+
+
+## 第三方登录
+
+> 以微博为例
+>
+> [微博开放平台](https://open.weibo.com/?sudaref=www.baidu.com&display=0&retcode=6102)
+>
+> 
